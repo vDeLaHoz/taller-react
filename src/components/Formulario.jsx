@@ -9,6 +9,7 @@ const Formulario = () => {
     const [direccion, setDireccion] = React.useState('')
     const [correo, setCorreo] = React.useState('')
     const [lista, setLista] = React.useState([])
+    const [image, setImage] = React.useState('https://picsum.photos/200/300?random=1')
     const [id, setId] = React.useState('')
     const [edicion, setEdicion] = React.useState(false)
     const [error, setError] = React.useState(null)
@@ -70,7 +71,8 @@ const Formulario = () => {
                 lastName: apellidos,
                 cel: celular,
                 direction: direccion,
-                email: correo
+                email: correo,
+                img: image
             }
 
             await db.collection('datos').add(newData)
@@ -79,7 +81,7 @@ const Formulario = () => {
                 ...lista,
                 {
                     name: nombres, lastName: apellidos, cel: celular, direction: direccion,
-                    email: correo
+                    email: correo, img: image
                 }
             ])
 
@@ -102,6 +104,7 @@ const Formulario = () => {
         setCelular(item.cel)
         setDireccion(item.direction)
         setCorreo(item.email)
+        setEdicion(true)
         setId(item.id)
     }
 
@@ -301,7 +304,7 @@ const Formulario = () => {
                                         <div className="row">
                                         <div className="col-4"><b>Celular: </b> {item.cel}</div>
                                         </div>
-                                        <div><img src="https://picsum.photos/200/300?random=1"></img></div>
+                                        <div><img src={item.img}></img></div>
                                     </span><br/>
                                     <button className='btn btn-success btn-sm float-start' onClick={() => editar(item)}>
                                         Editar
