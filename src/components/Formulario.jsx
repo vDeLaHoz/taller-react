@@ -301,6 +301,7 @@ const Formulario = () => {
                                         <div className="row">
                                         <div className="col-4"><b>Celular: </b> {item.cel}</div>
                                         </div>
+                                        <div><img src="https://picsum.photos/200/300?random=1"></img></div>
                                     </span><br/>
                                     <button className='btn btn-success btn-sm float-start' onClick={() => editar(item)}>
                                         Editar
